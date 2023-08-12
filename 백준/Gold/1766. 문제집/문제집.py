@@ -1,6 +1,7 @@
 import heapq
 import sys
 
+## change
 input = sys.stdin.readline
 
 N,M = map(int,input().split())
