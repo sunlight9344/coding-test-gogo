@@ -1,19 +1,12 @@
 from collections import deque
 
 def dfs(node):
-    visited = [False]*(N+1)
-    stack = [node]
-    
-    while stack:
-        x = stack.pop()
-        if not visited[x]:
-            print(x,end=' ')
-        visited[x] = True
-        
-        for togo in sorted(data[x],reverse=True):
-            if not visited[togo]:
-                stack.append(togo)
-                
+    print(node,end=' ')
+    visited[node] = True
+    for togo in sorted(data[node]):
+        if not visited[togo]:
+            dfs(togo)
+            
 def bfs(node):
     visited = [False]*(N+1)
     queue = deque([node])
@@ -38,6 +31,9 @@ for _ in range(M):
     data[a].append(b)
     data[b].append(a)
 
+stack = [V]
+visited = [False]*(N+1)
 dfs(V)
+
 print()
 bfs(V)
