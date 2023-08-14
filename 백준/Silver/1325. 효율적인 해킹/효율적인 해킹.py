@@ -1,23 +1,24 @@
-from collections import deque
-
-def bfs(node):
-    visited = [False]*(N+1)
-    count = 0
-    queue = deque([node])
+def dfs(node):
     
-    while queue:
-        x = queue.popleft()
+    k = 0
+    visited = [False]*(N+1)
+    stack = [i]
+    
+    while stack:
+        x = stack.pop()
         visited[x] = True
+        
         for togo in data[x]:
             if not visited[togo]:
-                count += 1
+                k += 1
                 visited[togo] = True
-                queue.append(togo)
-    return count
+                stack.append(togo)
+    return k
 
 N,M = map(int,input().split())
 
-data = [[]for _ in range(N+1)]
+data = [[] for _ in range(N+1)]
+
 for _ in range(M):
     a,b = map(int,input().split())
     data[b].append(a)
@@ -25,12 +26,12 @@ for _ in range(M):
 max_value = 0
 res = []
 for i in range(1,N+1):
-    c = bfs(i)
-    if c > max_value:
-        max_value = c
+    k = dfs(i)
+    if k > max_value:
         res = [i]
-    elif c == max_value:
+        max_value = k
+    elif k == max_value:
         res.append(i)
 
-[print(i,end=" ") for i in sorted(res)]
-        
+[print(i,end=' ') for i in sorted(res)]
+    
