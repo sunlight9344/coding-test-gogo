@@ -28,4 +28,4 @@ for _ in range(int(input())):
             dic[b] = b
             cnt[b] = 1
         union(a,b)
-        print(cnt[find_parent(a)])
+        print(cnt[dic[a]])
